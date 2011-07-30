@@ -1,3 +1,16 @@
 
 body { margin: 0; padding: 0; }
+ul, li { margin: 0; padding: 0; }
+h1, h2, h3 { margin: 0; padding: 0; }
 
+header { padding: 1em 0; }
+header h1 a { text-decoration: none; }
+
+#container { width: 960px; margin: 0 auto; }
+#content { width: 460px; margin: 0 10px; }
+#left-column, #right-column { width: 220px; }
+
+#left-column, #content, #right-column { margin: 0 10px; display: inline; float: left; min-height: 10px; }
+#left-column, #right-column { padding-top: .25em; }
+
+ul.links { list-style: none; }

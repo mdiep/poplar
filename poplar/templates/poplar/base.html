@@ -5,8 +5,25 @@
   <link rel='stylesheet' href='{{ STATIC_URL }}poplar/style.css' />
 </head>
 <body>
+  <div id='container'>
+    <header>
+      <h1><a href="{{ site.url }}">{{ site.name }}</a></h1>
+    </header>
+    <div id='left-column'>
+{% block left-column %}
+      <ul class='links'>
+        <li><a href='{% url activity-feed %}'>Activity Feed</a></li>
+      </ul>
+{% endblock %}
+    </div>
+    <div id='content'>
 {% block content %}
 {% endblock %}
+    </div>
+    <div id='right-column'>
+{% block right-column %}
+{% endblock %}
+  </div>
 </body>
 </head>
 
