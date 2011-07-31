@@ -4,6 +4,13 @@
 
 {% block content %}
 <h1>Everyone</h1>
+<ul class='people'>
+{% for person in people %}
+  <li>{{ person }}</li>
+{% empty %}
+  <li>No one found.</li>
+{% endfor %}
+</ul>
 {% endblock %}
 
 
