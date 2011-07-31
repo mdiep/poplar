@@ -8,3 +8,8 @@ def activity_feed(request):
     site = get_current_site(request)
     return render_to_response('poplar/activity_feed.html', locals(),
                               context_instance=RequestContext(request))
+
+def everyone(request):
+    site = get_current_site(request)
+    return render_to_response('poplar/everyone.html', locals(),
+                              context_instance=RequestContext(request))
