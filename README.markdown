@@ -8,3 +8,4 @@ Poplar is a [Django][] CRM for churches.
 ## Requirements
 
  * Django 1.3
+ * South 0.7
