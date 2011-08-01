@@ -15,6 +15,13 @@
         <li><a href='{% url activity-feed %}'>Activity Feed</a></li>
         <li><a href='{% url everyone %}'>Everyone</a></li>
       </ul>
+      
+      <h3>Groups</h3>
+      <ul class='links'>
+      {% for group in groups %}
+          <li>{{ group }}</li>
+      {% endfor %}
+      </ul>
 {% endblock %}
     </div>
     <div id='content'>
