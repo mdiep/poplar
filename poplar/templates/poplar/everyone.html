@@ -6,7 +6,7 @@
 <h1>Everyone</h1>
 <ul class='people'>
 {% for person in people %}
-  <li>{{ person }}</li>
+  <li><a href='{% url person person.id %}'>{{ person }}</a></li>
 {% empty %}
   <li>No one found.</li>
 {% endfor %}
