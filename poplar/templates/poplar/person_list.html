@@ -1,9 +1,9 @@
 {% extends "poplar/base.html" %}
 
-{% block title %}Everyone {{ block.super }}{% endblock %}
+{% block title %}{{ title }} {{ block.super }}{% endblock %}
 
 {% block content %}
-<h1>Everyone</h1>
+<h1>{{ title }}</h1>
 <ul class='people'>
 {% for person in people %}
   <li><a href='{% url person person.id %}'>{{ person }}</a></li>
