@@ -20,7 +20,7 @@ class Person(models.Model):
 class Group(models.Model):
     name   = models.CharField(max_length=30, unique=True)
     slug   = models.SlugField(max_length=30, unique=True)
-    people = models.ManyToManyField(Person, related_name='groups')
+    people = models.ManyToManyField(Person, related_name='groups', blank=True)
     
     def __unicode__(self):
         return self.name
