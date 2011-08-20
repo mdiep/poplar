@@ -11,6 +11,7 @@
     </header>
     <div id='left-column'>
 {% block left-column %}
+{% if request.user.is_authenticated %}
       <ul class='links'>
         <li><a href='{% url activity-feed %}'>Activity Feed</a></li>
         <li><a href='{% url everyone %}'>Everyone</a></li>
@@ -22,6 +23,7 @@
           <li><a href='{% url group group.slug %}'>{{ group }}</a></li>
       {% endfor %}
       </ul>
+{% endif %}
 {% endblock %}
     </div>
     <div id='content'>

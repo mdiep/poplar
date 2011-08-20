@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     url(r'',        include('poplar.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^sign-in/?', 'django.contrib.auth.views.login'),
 )
 
 if settings.DEBUG:
