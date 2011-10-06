@@ -16,6 +16,10 @@ class Person(models.Model):
     
     class Meta:
         verbose_name_plural = 'people'
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('person', [self.id])
 
 class Group(models.Model):
     name   = models.CharField(max_length=30, unique=True)

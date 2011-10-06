@@ -1,6 +1,9 @@
 
+from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.utils import simplejson
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models    import get_current_site
@@ -37,3 +40,11 @@ def person_list(request, people, title):
 def group(request, slug):
     group  = get_object_or_404(Group, slug=slug)
     return person_list(request, people=group.people.all(), title=group.name)
+
+@login_required
+def search(request):
+    term   = request.GET['term']
+    people = Person.objects.filter(Q(first_name__icontains=term) | Q(last_name__icontains=term))
+    data   = [{ 'label': unicode(p), 'url': p.get_absolute_url() } for p in people]
+    return HttpResponse(simplejson.dumps(data), mimetype='application/javascript')
+

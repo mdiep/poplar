@@ -26,3 +26,7 @@ ul.links { list-style: none; margin: 0; }
 ul.links li { margin-bottom: 0.2em; }
 ul.links a { text-decoration: none; }
 #left-column h3 { margin-top: 1.5em; text-transform: uppercase; font-size: 0.75em; }
+
+.ui-menu { background: white; border: solid grey 1px; border-top: 0; padding: 0; }
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active { background: #ddd; margin: 0; }

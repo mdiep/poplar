@@ -2,7 +2,20 @@
 <head>
   <meta charset='utf-8'>
   <title>{% block title %}| {{ site.name }}{% endblock %}</title>
+  <script src='{{ STATIC_URL }}js/jquery-1.6.4.min.js'></script>
+  <script src='{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js'></script>
+  <link rel='stylesheet' href='{{ STATIC_URL }}css/jquery-ui/jquery.ui.base.css' />
   <link rel='stylesheet' href='{{ STATIC_URL }}poplar/style.css' />
+  <script>
+$(function() {
+    var available=['Matt Diephouse', 'Sarah Diephouse'];
+    $( "#search" ).autocomplete({
+        source: "{% url api-search %}",
+        minLength: 3,
+        select: function(event, ui) { window.open(ui.item.url); },
+    });
+});
+  </script>
 </head>
 <body>
   <div id='container'>
@@ -10,7 +23,7 @@
       <h1 id='logo'><a href="{{ site.url }}">{{ site.name }}</a></h1>
 {% if request.user.is_authenticated %}
       <div id='header-buttons'>
-        <input type='search' name='search' placeholder='Jump to a Person or Group'/>
+        <input type='search' id='search' name='search' placeholder='Jump to a Person or Group'/>
       </div>
 {% endif %}
     </header>
