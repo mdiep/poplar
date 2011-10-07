@@ -12,7 +12,7 @@ $(function() {
     $( "#search" ).autocomplete({
         source: "{% url api-search %}",
         minLength: 3,
-        select: function(event, ui) { window.open(ui.item.url); },
+        select: function(event, ui) { window.location = ui.item.url; },
     });
 });
   </script>
