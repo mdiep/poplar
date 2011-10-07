@@ -12,6 +12,7 @@ h1 { font-weight: normal; letter-spacing: 0.05em; }
 
 header { padding: 1em 0; min-height: 40px; }
 header h1 a { text-decoration: none; }
+header div#user-details { float: right; }
 
 #container { width: 960px; margin: 0 auto; }
 div#header-buttons, content { width: 460px; margin: 0 10px; }

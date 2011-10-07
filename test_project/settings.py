@@ -39,7 +39,9 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-LOGIN_URL = '/sign-in/'
+LOGIN_URL          = '/sign-in/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL         = '/sign-out/'
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"

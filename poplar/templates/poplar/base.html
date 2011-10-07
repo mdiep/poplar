@@ -25,6 +25,9 @@ $(function() {
       <div id='header-buttons'>
         <input type='search' id='search' name='search' placeholder='Jump to a Person or Group'/>
       </div>
+      <div id='user-details'>
+          <p>{{ request.user }} | <a href="{% url sign-out %}">Sign Out</a></p>
+      </div>
 {% endif %}
     </header>
     <div style='clear: both;'></div>
