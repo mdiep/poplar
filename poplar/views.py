@@ -44,7 +44,7 @@ def group(request, slug):
 @login_required
 def search(request):
     term   = request.GET['term']
-    people = Person.objects.filter(Q(first_name__icontains=term) | Q(last_name__icontains=term))
+    people = Person.objects.filter(name__icontains=term)
     data   = [{ 'label': unicode(p), 'url': p.get_absolute_url() } for p in people]
     return HttpResponse(simplejson.dumps(data), mimetype='application/javascript')
 
