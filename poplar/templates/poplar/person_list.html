@@ -4,13 +4,22 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
-<ul class='people'>
+<form>
+<table class='people'>
+  <tr>
+    <th><input type='checkbox' class='checkall'/></th>
+    <th>Name</th>
+  </tr>
 {% for person in people %}
-  <li><a href='{% url person person.id %}'>{{ person }}</a></li>
+  <tr>
+    <td><input type='checkbox' /></td>
+    <td><a href='{% url person person.id %}'>{{ person }}</td>
+  </tr>
 {% empty %}
-  <li>No one found.</li>
+  <tr><td colspan='2'>No one found.</td></tr>
 {% endfor %}
-</ul>
+</table>
+</form>
 {% endblock %}
 
 

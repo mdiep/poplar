@@ -3,12 +3,14 @@ body { margin: 0; padding: 0; font-family: "Georgia", serif; }
 ul, ol { margin: 0 2em; padding: 0; }
 h1, h2, h3 { margin: 0; padding: 0; }
 p { margin-top: 0; }
+table { border-spacing: 0; border-collapse: collapse; }
 
 /* Tell WebKit to style search fields as text inputs. */
 input[type="search"] { -webkit-appearance: textfield; }
 
 body { font-family: "Georgia", serif; }
-h1, h2, h3 { font-family: "Helvetica Neue", "Helvetica", sans-serif; font-weight: normal; letter-spacing: 0.05em;  }
+h1, h2, h3, th { font-family: "Helvetica Neue", "Helvetica", sans-serif; letter-spacing: 0.05em;  }
+h1, h2, h3 { font-weight: normal; }
 h2 { font-size: 1.2em; }
 
 header { padding: 1em 0; min-height: 40px; }
@@ -20,8 +22,17 @@ header div#header-buttons a.header-button { text-align: center; text-decoration:
 header div#header-buttons input { font-size: 1.05em; margin-left: 1em; padding: 0.2em; width: 300px; }
 header div#header-buttons * { display: block; float: left; margin-top: 6px; }
 
+table.people { width: 100%; } 
+table.people th { text-align: left; }
+table.people tr:hover > td { background-color: #eee; }
+table.people tr * { padding: 0.2em 0; }
+table.people tr *:first-child { width: 1.5em; }
+table.people tr:hover td input[type="checkbox"],
+table.people tr td input:checked[type="checkbox"] { visibility: visible; }
+table.people tr td input[type="checkbox"] { visibility: hidden; }
+
 #container { width: 960px; margin: 0 auto; }
-div#header-buttons, content { width: 460px; margin: 0 10px; }
+div#header-buttons, div#content { width: 460px; margin: 0 10px; }
 h1#logo, #left-column, #right-column { width: 220px; }
 
 h1#logo, div#header-buttons, #left-column, #content, #right-column { margin: 0 10px; display: inline; float: left; min-height: 10px; }
