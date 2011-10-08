@@ -1,0 +1,19 @@
+{% extends "poplar/base.html" %}
+
+{% block title %}Add a Person {{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>Add a Person</h1>
+<form method='post' action='{% url person_add %}'>
+{% csrf_token %}
+{{ form }}
+<br/>
+<button type='submit'>Add Person</button>
+</form>
+{% endblock %}
+
+
+
+
+
+

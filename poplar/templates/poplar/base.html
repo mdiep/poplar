@@ -23,6 +23,7 @@ $(function() {
       <h1 id='logo'><a href="{{ site.url }}">{{ site.name }}</a></h1>
 {% if request.user.is_authenticated %}
       <div id='header-buttons'>
+        <a class='header-button' href='{% url person_add %}'>+</a>
         <input type='search' id='search' name='search' placeholder='Jump to a Person or Group'/>
       </div>
       <div id='user-details'>

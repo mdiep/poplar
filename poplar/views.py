@@ -1,6 +1,7 @@
 
+from django.core.urlresolvers import reverse
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils import simplejson
@@ -9,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models    import get_current_site
 
 from poplar.models import Person, Group
+from poplar.forms import PersonForm
 
 @login_required
 def activity_feed(request):
@@ -28,6 +30,19 @@ def person(request, id):
     groups = Group.objects.all()
     site   = get_current_site(request)
     return render_to_response('poplar/person.html', locals(),
+                              context_instance=RequestContext(request))
+
+@login_required
+def person_add(request):
+    site    = get_current_site(request)
+    if request.method == 'POST':
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            person = form.save()
+            return HttpResponseRedirect(reverse('person', args=[person.id]))
+    else:
+        form = PersonForm()
+    return render_to_response('poplar/person_add.html', locals(),
                               context_instance=RequestContext(request))
 
 @login_required

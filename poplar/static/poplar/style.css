@@ -15,6 +15,11 @@ header { padding: 1em 0; min-height: 40px; }
 header h1 a { text-decoration: none; }
 header div#user-details { float: right; }
 
+header div#header-buttons a.header-button { height: 28px; width: 28px; border: solid grey 1px; }
+header div#header-buttons a.header-button { text-align: center; text-decoration: none; font-weight: bold; line-height: 28px; }
+header div#header-buttons input { font-size: 1.05em; margin-left: 1em; padding: 0.2em; width: 300px; }
+header div#header-buttons * { display: block; float: left; margin-top: 6px; }
+
 #container { width: 960px; margin: 0 auto; }
 div#header-buttons, content { width: 460px; margin: 0 10px; }
 h1#logo, #left-column, #right-column { width: 220px; }
@@ -22,8 +27,6 @@ h1#logo, #left-column, #right-column { width: 220px; }
 h1#logo, div#header-buttons, #left-column, #content, #right-column { margin: 0 10px; display: inline; float: left; min-height: 10px; }
 #left-column, #right-column { padding-top: 0.5em; }
 #left-column h3 { font-weight: bold; }
-
-header div#header-buttons input { font-size: 1.05em; padding: 0.2em; margin-top: 6px; width: 300px; }
 
 ul.links { list-style: none; margin: 0; }
 ul.links li { margin-bottom: 0.2em; }
