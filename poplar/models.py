@@ -33,4 +33,7 @@ class Note(models.Model):
     
     def __unicode__(self):
         return '%s (%s on %s)' % (self.subject, self.author, self.timestamp)
+    
+    class Meta:
+        ordering = ["-timestamp"]
 
