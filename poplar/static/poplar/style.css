@@ -39,6 +39,8 @@ h1#logo, div#header-buttons, #left-column, #content, #right-column { margin: 0 1
 #left-column, #right-column { padding-top: 0.5em; }
 #left-column h3 { font-weight: bold; }
 
+div#content textarea { width: 100%; height: 6em; }
+
 ul.links { list-style: none; margin: 0; }
 ul.links li { margin-bottom: 0.2em; }
 ul.links a { text-decoration: none; }

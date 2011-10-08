@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models    import get_current_site
 
 from poplar.models import Person, Group
-from poplar.forms import PersonForm
+from poplar.forms import PersonForm, NoteForm
 
 @login_required
 def activity_feed(request):
@@ -29,6 +29,10 @@ def person(request, id):
     notes  = person.notes.filter(Q(is_public=True) | Q(author=request.user))[:10]
     groups = Group.objects.all()
     site   = get_current_site(request)
+    if request.POST:
+        note_form = NoteForm(request.POST, author=request.user, subject=person)
+    else:
+        note_form = NoteForm()
     return render_to_response('poplar/person.html', locals(),
                               context_instance=RequestContext(request))
 
@@ -51,6 +55,16 @@ def person_list(request, people, title):
     site   = get_current_site(request)
     return render_to_response('poplar/person_list.html', locals(),
                               context_instance=RequestContext(request))
+
+@login_required
+def note_add(request, person_id):
+    subject = get_object_or_404(Person, id=person_id)
+    if request.method == 'POST':
+        form = NoteForm(request.POST, author=request.user, subject=subject)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('person', args=[subject.id]))
+    return person(request, person_id)
 
 @login_required
 def group(request, slug):

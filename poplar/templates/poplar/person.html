@@ -4,7 +4,14 @@
 
 {% block content %}
 <h1>{{ person }}</h1>
-
+<h2>Add a Note</h2>
+<form method='POST' action='{% url note_add person.id %}'>
+{% csrf_token %}
+{% if note_form.body.errors %}<p>You can't add a blank note!</p>{% endif %}
+{{ note_form.body }}<br/>
+{{ note_form.is_public }}<label for="is_public">Share this note with everyone</label></br>
+<button type='submit'>Add Note</button>
+</form>
 <h2>Notes</h2>
 {% for note in notes %}
   <div class='note'>
