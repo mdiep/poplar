@@ -23,7 +23,7 @@ $(function() {
 <body>
   <div id='container'>
     <header>
-      <h1 id='logo'><a href="{{ site.url }}">{{ site.name }}</a></h1>
+      <h1 id='logo'><a href="/">{{ site.name }}</a></h1>
 {% if request.user.is_authenticated %}
       <div id='header-buttons'>
         <a class='header-button' href='{% url person_add %}'>+</a>
