@@ -2,13 +2,14 @@
 body { margin: 0; padding: 0; font-family: "Georgia", serif; }
 ul, ol { margin: 0 2em; padding: 0; }
 h1, h2, h3 { margin: 0; padding: 0; }
+p { margin-top: 0; }
 
 /* Tell WebKit to style search fields as text inputs. */
 input[type="search"] { -webkit-appearance: textfield; }
 
 body { font-family: "Georgia", serif; }
-header h1, #left-column h3 { font-family: "Helvetica Neue", "Helvetica", sans-serif; }
-h1 { font-weight: normal; letter-spacing: 0.05em; }
+h1, h2, h3 { font-family: "Helvetica Neue", "Helvetica", sans-serif; font-weight: normal; letter-spacing: 0.05em;  }
+h2 { font-size: 1.2em; }
 
 header { padding: 1em 0; min-height: 40px; }
 header h1 a { text-decoration: none; }
@@ -20,6 +21,7 @@ h1#logo, #left-column, #right-column { width: 220px; }
 
 h1#logo, div#header-buttons, #left-column, #content, #right-column { margin: 0 10px; display: inline; float: left; min-height: 10px; }
 #left-column, #right-column { padding-top: 0.5em; }
+#left-column h3 { font-weight: bold; }
 
 header div#header-buttons input { font-size: 1.05em; padding: 0.2em; margin-top: 6px; width: 300px; }
 

@@ -4,6 +4,16 @@
 
 {% block content %}
 <h1>{{ person }}</h1>
+
+<h2>Notes</h2>
+{% for note in notes %}
+  <div class='note'>
+    <span class='date'>{{ note.timestamp.date|date }}</span>
+    {{ note.body|linebreaks }}
+  </div>
+{% empty %}
+No notes yet!
+{% endfor %}
 {% endblock %}
 
 

@@ -24,6 +24,7 @@ def everyone(request):
 @login_required
 def person(request, id):
     person = get_object_or_404(Person, id=id)
+    notes  = person.notes.filter(Q(is_public=True) | Q(author=request.user))[:10]
     groups = Group.objects.all()
     site   = get_current_site(request)
     return render_to_response('poplar/person.html', locals(),

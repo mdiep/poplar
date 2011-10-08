@@ -1,6 +1,7 @@
 
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.contrib import auth
 
 class Person(models.Model):
     name = models.CharField(max_length=100)
@@ -22,3 +23,14 @@ class Group(models.Model):
     
     def __unicode__(self):
         return self.name
+
+class Note(models.Model):
+    author    = models.ForeignKey(auth.models.User, related_name='notes')
+    subject   = models.ForeignKey(Person, related_name='notes')
+    timestamp = models.DateTimeField()
+    is_public = models.BooleanField(default=False)
+    body      = models.TextField()
+    
+    def __unicode__(self):
+        return '%s (%s on %s)' % (self.subject, self.author, self.timestamp)
+
