@@ -3,7 +3,7 @@
 {% block title %}{{ person }} {{ block.super }}{% endblock %}
 
 {% block content %}
-<h1>{{ person }}</h1>
+<h1>{{ person }}</h1> <a href='{% url person_edit person.id %}'>Edit {{ person }}</a>
 <h2>Add a Note</h2>
 <form method='POST' action='{% url note_add person.id %}'>
 {% csrf_token %}

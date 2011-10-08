@@ -50,6 +50,19 @@ def person_add(request):
                               context_instance=RequestContext(request))
 
 @login_required
+def person_edit(request, id):
+    person = get_object_or_404(Person, id=id)
+    if request.method == 'POST':
+        form = PersonForm(request.POST, instance=person)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('person', args=[person.id]))
+    else:
+        form = PersonForm(instance=person)
+    return render_to_response('poplar/person_edit.html', locals(),
+                              context_instance=RequestContext(request))
+
+@login_required
 def person_list(request, people, title):
     groups = Group.objects.all()
     site   = get_current_site(request)
