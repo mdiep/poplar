@@ -4,4 +4,18 @@
 
 {% block content %}
 <h1>Activity Feed</h1>
+{% for action in actions %}
+<div class='action'>
+{% if action.verb == 'ad' and action.person %}
+{{ action.actor }} added <a href='{{ action.person.get_absolute_url }}'>{{ action.person }}</a>.
+{% else %}{% if action.verb == 'wr' and action.note %}
+{{ action.actor }} wrote a note about <a href='{{ action.person.get_absolute_url }}'>{{ action.person }}</a>:
+<blockquote>{{ action.note.body }}</blockquote>
+{% else %}
+{{ action }}
+{% endif %}{% endif %}
+</div>
+{% empty %}
+No recent activity.
+{% endfor %}
 {% endblock %}

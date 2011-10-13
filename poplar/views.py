@@ -1,4 +1,6 @@
 
+from datetime import datetime
+
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
@@ -9,13 +11,14 @@ from django.utils import simplejson
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models    import get_current_site
 
-from poplar.models import Person, Group
+from poplar.models import Person, Group, Action
 from poplar.forms import PersonForm, NoteForm
 
 @login_required
 def activity_feed(request):
-    groups = Group.objects.all()
-    site   = get_current_site(request)
+    groups  = Group.objects.all()
+    site    = get_current_site(request)
+    actions = Action.objects.filter(is_public=True).exclude(actor=request.user)[:20]
     return render_to_response('poplar/activity_feed.html', locals(),
                               context_instance=RequestContext(request))
 
@@ -43,6 +46,12 @@ def person_add(request):
         form = PersonForm(request.POST)
         if form.is_valid():
             person = form.save()
+            action = Action(timestamp=datetime.now(),
+                            is_public=True,
+                            actor=request.user,
+                            verb='ad',
+                            person=person)
+            action.save()
             return HttpResponseRedirect(reverse('person', args=[person.id]))
     else:
         form = PersonForm()
@@ -75,7 +84,14 @@ def note_add(request, person_id):
     if request.method == 'POST':
         form = NoteForm(request.POST, author=request.user, subject=subject)
         if form.is_valid():
-            form.save()
+            note   = form.save()
+            action = Action(timestamp=datetime.now(),
+                            is_public=note.is_public,
+                            actor=request.user,
+                            verb='wr',
+                            note=note,
+                            person=subject)
+            action.save()
             return HttpResponseRedirect(reverse('person', args=[subject.id]))
     return person(request, person_id)
 
